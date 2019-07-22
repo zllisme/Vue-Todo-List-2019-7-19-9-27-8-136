@@ -41,8 +41,6 @@ export default {
     data() {
         return {
             todos: window.todoStorage.fetch(),
-            editedTodo: null,
-            beforeEditCache: '',
             visibility
         };
     },
@@ -61,33 +59,14 @@ export default {
         addTodo(newTodo) {
             this.todos.unshift({
                 title: newTodo,
-                computed: false
+                computed: false,
+                editable: false
             });
             console.log(newTodo);
         },
         changeVisibility(value) {
             this.visibility = value;
 
-        },
-        editTodo(todo) {
-            this.editedTodo = todo;
-            this.beforeEditCache = todo.title;
-        },
-        doneEdit(todo) {
-            if(!this.editedTodo) {
-                return;
-            }
-            this.editedTodo = null;
-            todo.title = todo.title.trim();
-            if(!todo.title) {
-                this.removeTodo(todo);
-            }
-        }, 
-        cancelEdit(todo) {
-            if(this.editedTodo) {
-                todo.title = this.beforeEditCache;
-                this.editedTodo = null;
-            }
         }
     }
 

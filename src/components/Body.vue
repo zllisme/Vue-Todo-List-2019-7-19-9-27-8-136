@@ -1,6 +1,6 @@
 <template>
   <div>
-      <InputBar @push="onPushTodoItem"></InputBar>
+      <InputBar @push="onPushTodoItem" ></InputBar>
       <ListContainer :list="list"></ListContainer>
   </div>
     

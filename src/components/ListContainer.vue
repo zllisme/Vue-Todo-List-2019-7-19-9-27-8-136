@@ -7,13 +7,14 @@
             :class="{completed: item.completed}"
           >
             <input type="checkbox" v-model="item.completed" :class="{ done: item.completed }">
-            <label @dblclick="editTodo(item)">{{item.title}}</label>
+            <span :contentEditable="item.editable" @keydown.enter.prevent="changeNotAble($event, item)"  @dblclick="changeName(item)">{{item.title}}</span>
           </li>
         </ol>
     </div>
 </template>
 
 <script>
+import { scrypt } from 'crypto';
 export default {
     name: "ListContianer",
     props: {
@@ -22,9 +23,13 @@ export default {
             default: () => []
         }
     },
-    mounted(){
-      console.log(this.list);
-
+    methods: {
+      changeName (item) {
+          item.editable = true;
+      },
+      changeNotAble (e, item) {
+          item.title = e.target.innerText;
+      }
     }
 }
 </script>
@@ -67,5 +72,3 @@ li:hover{
  }
 
 </style>
-
-
