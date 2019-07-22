@@ -1,0 +1,108 @@
+<template>
+  <div id="app">
+      <Header></Header>
+      <Body :list="filteredTodos" @push="addTodo"></Body>
+      <Footer :dataFilter="visibility" @change="changeVisibility"></Footer>
+  </div>
+</template> 
+
+<script>
+import Header from './components/Header.vue';
+import Footer from './components/Footer.vue';
+import Body from './components/Body.vue';
+
+let filters = {
+  all: todos => todos,
+  active: todos => todos.filter(todo => !todo.completed),
+  completed: todos => todos.filter(todo => todo.completed)
+}
+let visibility =location.hash.substr(location.hash.indexOf('/') + 1);
+visibility = visibility === '' ? 'all' : visibility;
+
+let STORAGE_KEY = 'todos';
+window.todoStorage = {
+  fetch() {
+    try {
+      return JSON.parse(localStorage.getItem(STORAGE_KEY) || '[]');
+    } catch(err) { 
+      return [];
+    }
+  },
+  save(todos) {
+    localStorage.setItem(STORAGE_KEY, JSON.stringify(todos));
+  }
+};
+
+export default {
+    name: 'app',
+    components: {
+        Header, Footer, Body
+    },
+    data() {
+        return {
+            todos: window.todoStorage.fetch(),
+            editedTodo: null,
+            beforeEditCache: '',
+            visibility
+        };
+    },
+    watch: {
+        todos: {
+            deep: true,
+            handler: window.todoStorage.save
+        }
+    },
+    computed: {
+        filteredTodos() {
+            return filters[this.visibility](this.todos);
+        }
+    },
+    methods: {
+        addTodo(newTodo) {
+            this.todos.unshift({
+                title: newTodo,
+                computed: false
+            });
+            console.log(newTodo);
+        },
+        changeVisibility(value) {
+            this.visibility = value;
+
+        },
+        editTodo(todo) {
+            this.editedTodo = todo;
+            this.beforeEditCache = todo.title;
+        },
+        doneEdit(todo) {
+            if(!this.editedTodo) {
+                return;
+            }
+            this.editedTodo = null;
+            todo.title = todo.title.trim();
+            if(!todo.title) {
+                this.removeTodo(todo);
+            }
+        }, 
+        cancelEdit(todo) {
+            if(this.editedTodo) {
+                todo.title = this.beforeEditCache;
+                this.editedTodo = null;
+            }
+        }
+    }
+
+}
+  
+</script>
+
+<style>
+#app {
+  font-family: 'Avenir', Helvetica, Arial, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-align: center;
+  color: #2c3e50;
+  margin-top: 60px;
+}
+</style>
+
