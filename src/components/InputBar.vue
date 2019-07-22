@@ -32,13 +32,29 @@ export default {
 </script>
 
 <style>
-.inputText {
-    width: 200px;
-    margin-right: 10px;
+
+.input-text{
+    width: 70%;
 }
-button {
-    background-color: pink;
-    color: white;
+
+input{
+    padding: 4px 15px 4px 0;
+    
+}
+
+button{
+display: inline-block;
+background-color:#fc999b;
+color:#ffffff;
+border-radius: 5px;
+text-align:center;
+margin-top:2px;
+padding: 5px 15px;
+}
+
+button:hover{
+cursor: pointer;
+opacity: .8;
 }
 
 </style>

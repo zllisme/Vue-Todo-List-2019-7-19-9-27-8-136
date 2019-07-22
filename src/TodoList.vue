@@ -96,13 +96,17 @@ export default {
 </script>
 
 <style>
+body {
+    font: normal normal 13px/16px "Open Sans", sans-serif;
+    background: #ccc;
+}
 #app {
-  font-family: 'Avenir', Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
+    padding: 20px;
+    width: 400px;
+    margin: 0 auto;
+    margin-top: 40px;
+    background: white;
+    border-radius: 5px;
 }
 </style>
 
