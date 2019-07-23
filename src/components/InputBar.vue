@@ -24,7 +24,7 @@ export default {
                 return;
             }
             let todo = this.newTodo;
-            this.$emit("push", todo);
+            this.$store.commit('addTodo', todo);
             this.newTodo = '';
         }
     }

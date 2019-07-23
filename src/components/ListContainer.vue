@@ -2,7 +2,7 @@
     <div id="ListContainer">
         <ol class="todo-list">
           <li
-            v-for="(item, index) in list"
+            v-for="(item, index) in this.$store.getters.getFilteredTodos"
             :key="index"
             :class="{completed: item.completed}"
           >
@@ -16,12 +16,6 @@
 <script>
 export default {
     name: "ListContianer",
-    props: {
-        list: {
-            type: Array,
-            default: () => []
-        }
-    },
     methods: {
       changeName (item) {
           item.editable = true;

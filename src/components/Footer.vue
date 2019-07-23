@@ -17,12 +17,9 @@
 <script>
 export default {
     name: "Footer",
-    props: {
-        dataFilter: String
-    },
     methods: {
         changeDataFilter(str) {
-            this.$emit("change", str);
+            this.$store.commit('setVisibility', str);
         }
     }
 }

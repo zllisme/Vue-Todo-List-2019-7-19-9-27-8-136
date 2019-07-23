@@ -1,7 +1,7 @@
 <template>
   <div>
-      <InputBar @push="onPushTodoItem" ></InputBar>
-      <ListContainer :list="list"></ListContainer>
+      <InputBar></InputBar>
+      <ListContainer></ListContainer>
   </div>
     
 </template>
@@ -15,19 +15,6 @@ export default {
     components: {
         InputBar,
         ListContainer
-    },
-    props: {
-        list: {
-            type: Array,
-            default: () => []
-        }
-    },
-    methods: {
-        onPushTodoItem(payload) {
-            this.$emit("push", payload);
-        }
-
     }
-
 }
 </script>
