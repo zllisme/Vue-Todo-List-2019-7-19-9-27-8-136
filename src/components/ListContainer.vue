@@ -14,7 +14,6 @@
 </template>
 
 <script>
-import { scrypt } from 'crypto';
 export default {
     name: "ListContianer",
     props: {

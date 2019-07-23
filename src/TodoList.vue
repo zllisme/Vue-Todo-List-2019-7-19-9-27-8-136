@@ -62,7 +62,6 @@ export default {
                 computed: false,
                 editable: false
             });
-            console.log(newTodo);
         },
         changeVisibility(value) {
             this.visibility = value;
