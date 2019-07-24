@@ -1,5 +1,5 @@
 <template>
-  <div id="app">
+  <div id="todoList">
       <Header></Header>
       <Body></Body>
       <Footer></Footer>
@@ -7,12 +7,12 @@
 </template> 
 
 <script>
-import Header from './components/Header.vue';
-import Footer from './components/Footer.vue';
-import Body from './components/Body.vue';
+import Header from './Header.vue';
+import Footer from './Footer.vue';
+import Body from './Body.vue';
 
 export default {
-    name: 'app',
+    name: 'todoList',
     components: {
         Header, Footer, Body
     }
