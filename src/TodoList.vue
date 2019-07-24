@@ -1,8 +1,8 @@
 <template>
   <div id="app">
       <Header></Header>
-      <Body  @push="addTodo"></Body>
-      <Footer :dataFilter="visibility" @change="changeVisibility"></Footer>
+      <Body></Body>
+      <Footer></Footer>
   </div>
 </template> 
 

@@ -2,7 +2,7 @@ export default {
   addTodo (state, newTodo) {
     state.todos.unshift({
       title: newTodo,
-      computed: false,
+      completed: false,
       editable: false
     });
   },
