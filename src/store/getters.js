@@ -9,5 +9,8 @@ export default {
   },
   getVisibility (state) { 
     return state.visibility;
+  },
+  getLoginName (state) { 
+    return state.loginName;
   }
 }

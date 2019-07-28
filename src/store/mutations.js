@@ -11,5 +11,8 @@ export default {
   },
   setVisibility (state, str) {
     state.visibility = str;
+  },
+  setLoginName(state, name) {
+    state.loginName = name;
   }
 }

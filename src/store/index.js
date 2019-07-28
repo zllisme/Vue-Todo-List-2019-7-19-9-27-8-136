@@ -13,7 +13,8 @@ Vue.use(Vuex)
 const state = {
 
   todos: [],
-  visibility: "all"
+  visibility: "all",
+  loginName: ""
 
 }
 

@@ -25,13 +25,13 @@ body {
     font: normal normal 13px/16px "Open Sans", sans-serif;
     background: #ccc;
 }
-#app {
+/* #app {
     padding: 20px;
     width: 400px;
     margin: 0 auto;
     margin-top: 40px;
     background: white;
     border-radius: 5px;
-}
+} */
 </style>
 

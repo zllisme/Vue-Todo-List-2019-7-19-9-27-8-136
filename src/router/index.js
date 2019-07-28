@@ -2,6 +2,10 @@ import Vue from 'vue'
 import Router from 'vue-router'
 import TodoList from '../components/TodoList.vue'
 import Main from '../components/Main.vue'
+import Home from '../components/Home.vue'
+import UserInfo from '../components/UserInfo.vue'
+
+
 
 Vue.use(Router)
 
@@ -28,12 +32,21 @@ export default new Router({
       path: '/',
       name: 'main',
       component: Main
-
     },
     {
-      path: '/todoList',
-      name: "todoList",
-      component: TodoList
+      path: '/home',
+      name: "home",
+      component: Home,
+      children: [
+        {
+          path: '',
+          component: TodoList
+        },
+        {
+          path: 'user-info',
+          component: UserInfo
+        }
+      ]
     }
   ]
 })
